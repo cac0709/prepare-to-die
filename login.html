@@ -1,22 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>登入頁面</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
-    <script type="text/javascript" src="login.js"></script>
-    </head>
-    <body>
-    <div id="login_frame">
-    <p id="image_logo"><img src="https://www.cgh.org.tw/tw/img/cgh03.gif"></p>
-    <form method="post" action="login.js">
-    <p><label class="label_input">帳號</label><input type="text" id="username" class="text_field"/></p>
-    <p><label class="label_input">密碼</label><input type="text" id="password" class="text_field"/></p>
-    <div id="login_control">
-    <input type="button" id="btn_login" value="登入" onclick="login();"/>
-    <a id="forget_pwd" href="forget_pwd.html">忘記密碼？</a>
-    </div>
-    </form>
-    </div>
-    </body>
-    </html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>會議室預約系統登入</title>
+		<style type="text/css">
+        body{
+            background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/db/Cathay_General_Hospital_HQ_20160723.jpg");;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+		.login-form {
+			width: 400px;
+            height: 260px;
+            padding: 13px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -200px;
+            background-color: rgba(240, 255, 255, 0.5);
+            border-radius: 10px;
+            text-align: center;
+		}
+        .image_logo {
+            margin-top: 25px;
+         }
+		.login-form input[type="password"],
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #00AA00;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="login-form">
+        <p id="image_logo"><img src="https://www.cgh.org.tw/tw/img/cgh03.gif"></p>
+			<form action="auth" method="POST">
+				<input type="text" name="username" placeholder="Userid" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="submit" value="登入">
+			</form>
+		</div>
+	</body>
+</html>
