@@ -19,6 +19,11 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
+app.get(/(.*)\.(jpg|gif|png|ico|css|js|txt)/i, function(req, res) {
+    res.sendfile(__dirname + "/" + req.params[0] + "." + req.params[1], function(err) {
+        if (err) res.send(404);
+    });
+});
 app.get('/home', function(request, response) {
 	response.sendFile(path.join(__dirname + '/homepage.html'));
 });
@@ -26,9 +31,12 @@ app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/login.html'));
 });
 
+
 app.post('/auth', function(request, response) {
+	
 	var username = request.body.username;
 	var password = request.body.password;
+	
 	if (username && password) {
 		connection.query('SELECT * FROM logindata WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
 			if (results.length > 0) {
@@ -36,7 +44,9 @@ app.post('/auth', function(request, response) {
 				request.session.username = username;
 				response.redirect('/home');
 			} else {
-				response.send('Incorrect Userid and/or Password!');
+				response.send(
+					'<h2>請重新嘗試輸入帳號密碼</h2>' 
+					);
 			}			
 			response.end();
 		});
