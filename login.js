@@ -30,6 +30,9 @@ app.get('/home', function(request, response) {
 app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/login.html'));
 });
+app.get('/error', function(request, response) {
+	response.sendFile(path.join(__dirname + '/error.html'));
+});
 
 
 app.post('/auth', function(request, response) {
@@ -44,9 +47,8 @@ app.post('/auth', function(request, response) {
 				request.session.username = username;
 				response.redirect('/home');
 			} else {
-				response.send(
-					'<h2>請重新嘗試輸入帳號密碼</h2>' 
-					);
+				response.redirect('/error');
+				
 			}			
 			response.end();
 		});
