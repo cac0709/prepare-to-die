@@ -7,7 +7,7 @@ var path = require('path');
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
-	password : '123',
+	password : '123456',
 	database : 'loginjs'
 });
 
@@ -24,15 +24,25 @@ app.get(/(.*)\.(jpg|gif|png|ico|css|js|txt)/i, function(req, res) {
         if (err) res.send(404);
     });
 });
-app.get('/home', function(request, response) {
-	response.sendFile(path.join(__dirname + '/homepage.html'));
+app.get('/homepage', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views','homepage.html'));
 });
 app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname + '/login.html'));
+	response.sendFile(path.join(__dirname + '/views','login.html'));
 });
 app.get('/error', function(request, response) {
-	response.sendFile(path.join(__dirname + '/error.html'));
+	response.sendFile(path.join(__dirname + '/views','error.html'));
 });
+app.get('/checkin', function(request, response) {
+	response.sendFile(path.join(__dirname + '/views', 'checkin.html'));
+});
+app.get('/record', function(request, response) {
+	response.sendFile(path.join(__dirname +  '/views' , 'record.html'));
+});
+app.get('/reservation', function(request, response) {
+	response.sendFile(path.join(__dirname +  '/views' , 'reservation.html'));
+});
+
 
 
 app.post('/auth', function(request, response) {
@@ -45,7 +55,7 @@ app.post('/auth', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
-				response.redirect('/home');
+				response.redirect('/homepage');
 			} else {
 				response.redirect('/error');
 				
