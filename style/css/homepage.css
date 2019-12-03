@@ -1,4 +1,3 @@
-
 body, html{
     width: 100%;
     height: 100%;
@@ -79,6 +78,7 @@ header{
     line-height: 40px;
 }
 header #links {
+    
     float: right;
     height: 50px;
     display: block;
@@ -86,14 +86,29 @@ header #links {
     font-size: 2em;
     
 }
-
 #links>a{
-    color: #3511d8;
     text-decoration: none;
     padding: 0.25em;
     height: 100%;
     width: 100%;
     display: block;
+    float: right;
+    border:0.5px blue solid;
+    color: blue;
+}
+
+#user-name{
+    line-height: 50px;
+    
+    color: blue;
+    float:right;
+    font-size: 2em;
+}
+#user-name>p{
+    color: blue;
+    float:right;
+    height: 100%;
+    width: 100%;
 }
 
 #links:hover{
@@ -101,10 +116,29 @@ background-color: #1e90ff;
 }
 
 main{
+    top: 200px;
     position: absolute;
-    top: 50px;
     left: 200px;
-    height: calc(100%-50px);
-    width: calc(100%-200px);
-    background-color: #ecf0f1;
+   
 }
+
+.main_func_text{
+    color: #1322ec;
+   font-size: large;
+
+}
+
+main #table{
+    height: 600px;
+    width: 600px; 
+}
+
+main #info-menu{
+   float: left;
+  }
+select{
+width: 100px;
+}
+.inputer{
+    margin: 20px;
+  }

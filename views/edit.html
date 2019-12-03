@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"-->
+    <title>首頁</title>
+    
+    <link href="/style/css/homepage.css" type="text/css" rel="stylesheet" charset="utf-8"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+  
+</head>
+<body>
+        <img src="/style/picture/homeTitlePicture.jpg" >
+    <div id="container">
+        <nav>
+            <div id="logo">
+                會議管理系統                
+            </div>
+            <ul id=menu>
+                <li><a href="/homepage">首頁</a></li>
+                <li><a href="/reservation">會議查詢/預約</a></li>
+                <li><a href="/checkin">會議簽到</a></li>
+                <li><a href="/record">會議記錄</a></li>
+                <li><a href="/edit">編輯會議/參加人員</a></li>
+            </ul>
+        </nav>   
+        <header>
+            <div id="links">
+                <a href="">登出</a>
+            </div>
+        </header> 
+        <main>
+        <form action="" method="post">
+          <div class="main_func" id="selectByEq_fbtn">
+            <div class="main_func_text">預約資料</div>
+            <h3>會議編號: 000000</h3>
+            <h3>申請人: Giorno Giovanna</h3>
+            <h3>申請人單位: 專題孤兒院</h3>
+            <h3>分機: 000000</h3>
+           </div>
+           <div class="inputer">
+            會議名稱：<input type="text" name="MeetingName" class="inparea">
+            </div>
+                  <div class="inputer">
+                          會議室編號：<select name="RoomID" class="inparea">
+                                  <option value ="">第一會議室</option>
+                                  <option value ="">第二會議室</option>
+                                  <option value ="b">第三會議室</option>
+                                  <option value ="c">第四會議室</option>
+                          </select>
+                  </div>                          
+                  <div class="inputer">
+                         開會日期：<input type="date" name="EXPdate" class="inparea">
+                  </div>
+                  
+                          <div class="inputer">
+                          開始時間：<select name="StartTime" class="inparea">
+                                  <option value ="">7:00</option>
+                                  <option value ="">8:00</option>
+                                  <option value ="">9:00</option>
+                                  <option value ="">10:00</option>
+                                  <option value ="">11:00</option>
+                                  <option value ="">12:00</option>
+                                  <option value ="">13:00</option>
+                                  <option value ="">14:00</option>
+                                  <option value ="">15:00</option>
+                                  <option value ="">16:00</option>
+                                  <option value ="">17:00</option>
+                          </select>
+                          </div>        
+                          <div class="inputer">
+                                  結束時間：<select name="StartTime" class="inparea">
+                                          <option value ="">8:00</option>
+                                          <option value ="">9:00</option>
+                                          <option value ="">10:00</option>
+                                          <option value ="">11:00</option>
+                                          <option value ="">12:00</option>
+                                          <option value ="">13:00</option>
+                                          <option value ="">14:00</option>
+                                          <option value ="">15:00</option>
+                                          <option value ="">16:00</option>
+                                          <option value ="">17:00</option>
+                                          <option value ="">18:00</option>
+                                  </select>
+                          </div>
+                                  <div class="inputer">
+                                          開會單位：<select name="RoomID" class="inparea">
+                                                  <option value ="">婦產科</option>
+                                                  <option value ="">精神科</option>
+                                                  <option value ="">泌尿科</option>
+                                                  <option value ="">科科</option>
+                                          </select>
+                                  </div>
+                                  <div class="inputer">
+                                    開會單位：<select name="MeetingType" class="inparea">
+                                            <option value ="">忘記要開會了</option>
+                                            <option value ="">今天放假</option>
+                                            <option value ="">出國</option>
+                                            <option value ="">要去總院幫忙</option>
+                                    </select>
+                            </div>                     
+                  <div class="form-btn">
+                      <button type="submit" value="submit" class="btn btn-primary">確定</button>
+                </div>
+              </form>  
+        </main> 
+    </div>    
+    <script src="homepage.js"></script>
+</body>
+</html>

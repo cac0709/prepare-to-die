@@ -1,21 +1,31 @@
-var mysql = require('mysql');
-var express = require('express');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var path = require('path');
+const mysql = require('mysql');
+const express = require('express');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const path = require('path');
 
-var connection = mysql.createConnection({
+const db = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
 	password : '123456',
 	database : 'loginjs'
 });
+//connect to database
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Connected to database');
+});
+global.db = db;
 
-var app = express();
+const app = express();
 app.use(session({
 	secret: 'secret',
 	resave: true,
-	saveUninitialized: true
+	saveUninitialized: true,
+	cookie: {maxAge: 1000 * 60 * 30},   // cookie保存30分鐘
+	rolling: true   // 最後一次操作後可以再保存30分鐘的cookie
 }));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
@@ -42,6 +52,9 @@ app.get('/record', function(request, response) {
 app.get('/reservation', function(request, response) {
 	response.sendFile(path.join(__dirname +  '/views' , 'reservation.html'));
 });
+app.get('/edit', function(request, response) {
+	response.sendFile(path.join(__dirname +  '/views' , 'edit.html'));
+});
 
 
 
@@ -51,7 +64,7 @@ app.post('/auth', function(request, response) {
 	var password = request.body.password;
 	
 	if (username && password) {
-		connection.query('SELECT * FROM logindata WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
+		db.query('SELECT * FROM logindata WHERE id = ? AND password = ?', [username, password], function(error, results, fields) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
